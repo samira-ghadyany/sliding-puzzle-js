@@ -1,0 +1,195 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+  font-family: Arial, sans-serif;
+}
+body {
+  background: rgba(162, 197, 142, 0.7);
+}
+/* Full-screen overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(162, 197, 142, 0.5); /* Semi-transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Styled dialogue box */
+#dialogue-box {
+  background: white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Title */
+#dialogue-box p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input container */
+#input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Select dropdown */
+#dimension-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+#dimension-select:hover {
+  border: 2px solid #28c43f;
+}
+
+/* Start Button */
+#start-button {
+  width: 100%;
+  padding: 12px;
+  font-family: "Roboto", serif;
+  font-size: 20px;
+  background: #54986a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#start-button:hover {
+  background: #40cc55;
+  box-shadow:
+    2px 2px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#container {
+  margin: 50px auto;
+  position: relative;
+  background-color: #fcc182;
+  border: 14px ridge #f5b46d;
+  border-radius: 10px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25),
+    inset 0 4px 6px rgba(255, 255, 255, 0.35),
+    0 0 0 2px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.item {
+  position: absolute;
+  border: solid 1px #e0a15a;
+  box-sizing: border-box;
+  background-color: white;
+  text-align: center;
+  line-height: 80px;
+  z-index: 2;
+  font-family: "Roboto", serif;
+  font-size: 35px;
+  font-weight: 400;
+  color: #1c6807;
+  box-shadow:
+    0 2px 10px rgba(97, 94, 94, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7),
+    inset 0 -3px 5px rgba(60, 59, 59, 0.15);
+}
+
+.emptyDiv {
+  background-color: #fcc182;
+  border: none;
+  z-index: 1;
+  box-shadow: none;
+}
+
+#win-container {
+  margin: 50px auto;
+  width: 400px;
+  height: 150px;
+  text-align: center;
+  display: none;
+  line-height: 40px;
+  font-family: "Roboto", serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #0b2d01;
+}
+
+#choices {
+  margin: 60px auto;
+  width: 270px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#change-level {
+  float: right;
+}
+
+#shuffle {
+  float: left;
+}
+
+.button {
+  display: none;
+  width: 120px;
+  height: 40px;
+  border: outset 1px #406b34;
+  border-radius: 12px;
+  text-align: center;
+  font-family: "Roboto", serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: #1c6807;
+  background-color: #f9e3cb;
+  box-shadow: 1px 1px 4px rgb(76, 76, 76);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:not(.disabled):hover {
+  transform: translateY(-2px);
+  box-shadow:
+    2px 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  background-color: #f5d8b8;
+}
+
+.disabled {
+  background-color: #bfbbb7;
+  color: gray;
+  cursor: not-allowed;
+}

@@ -1,0 +1,51 @@
+graph TD
+    start["start()"] --> puzzleConstructor["Puzzle constructor"]
+    puzzleConstructor --> moveHandlerConstructor["MoveHandler constructor"]
+    moveHandlerConstructor --> stateInstance["PuzzleState instance"]
+    
+    start --> startGame["startGame()"]
+    startGame --> beforeGameStart["beforeGameStart()"]
+    beforeGameStart --> setContainerSize["setContainerSize()"]
+    setContainerSize --> generatePuzzleGrid["generatePuzzleGrid()"]
+    
+    generatePuzzleGrid --> makeDiv["makeDiv()"]
+    makeDiv --> setEmptyDiv["setEmptyDiv()"]
+    makeDiv --> addListener["addEventListener → MoveHandler.handle()"]
+    
+    generatePuzzleGrid --> shuffle["shuffle()"]
+    shuffle --> shuffle_swapTiles["state.swapTiles()"]
+    shuffle --> shuffle_updateEmpty["state.updateEmptyIndex()"]
+    
+    shuffle --> appendTilesToGrid["appendTilesToGrid()"]
+    appendTilesToGrid --> setStartTime["setStartTime()"]
+    
+    setStartTime --> handle["User clicks → MoveHandler.handle()"]
+    handle --> hasEmptyNeighbor["hasEmptyNeighbor()"]
+    hasEmptyNeighbor --> checkNeighbor{Is neighbor?}
+    checkNeighbor -->|No| exit["Exit"]
+    checkNeighbor -->|Yes| playMoveSound["playMoveSound()"]
+    
+    playMoveSound --> increaseMoves["state.increaseMoveCounter()"]
+    increaseMoves --> graphicalSwap["graphicalSwap()"]
+    graphicalSwap --> swapAttributes["swapAttributes()"]
+    swapAttributes --> move_swapTiles["state.swapTiles()"]
+    move_swapTiles --> move_updateEmpty["state.updateEmptyIndex()"]
+    
+    move_updateEmpty --> isGameFinished["state.isGameFinished()"]
+    isGameFinished --> checkFinished{Puzzle solved?}
+    checkFinished -->|No| userClick
+    checkFinished -->|Yes| finishCallback["finishTheGameCallback()"]
+    
+    finishCallback --> removeBoardListeners["removeBoardClickHandlers()"]
+    removeBoardListeners --> afterGameEnd["afterGameEnd()"]
+    afterGameEnd --> playWinSound["playWinSound()"]
+    playWinSound --> gameOver["Game Over"]
+    
+    newGame["newGame()"] --> resetUI["Reset UI"]
+    resetUI --> showMenu["Show Start Menu"]
+    
+    style start fill:#4CAF50
+    style handle fill:#2196F3
+    style finishCallback fill:#FF9800
+    style gameReady fill:#c8e6c9
+    style gameOver fill:#ffccbc

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Challenge your brain with this sliding puzzle game. Solve the grid in the fewest moves and shortest time!"
+    />
+    <meta name="author" content="Samira Ghadyany" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og: title" content="Sliding Puzzle Game" />
+    <meta property="og: description" content="Solve the puzzle in few moves!" />
+    <meta
+      property="og:image"
+      content="https://github.com/samira-ghadyany/sliding-puzzle-js/img/preview.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      type="image/png"
+      sizes="32x32"
+      rel="icon"
+      href="img/icons8-puzzle-32.png"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+    <title>Sliding Puzzle Game</title>
+  </head>
+  <body>
+    <!-- Overlay with Dialogue Box -->
+    <div class="overlay" id="dialogue-overlay">
+      <!--Start of dialog box-->
+      <div id="dialogue-box">
+        <p>Select the puzzle dimensions</p>
+        <div id="input">
+          <div id="dimension">
+            <select id="dimension-select">
+              <option value="3">3 * 3</option>
+              <option value="4">4 * 4</option>
+              <option value="5">5 * 5</option>
+              <option value="6">6 * 6</option>
+              <option value="7">7 * 7</option>
+              <option value="8">8 * 8</option>
+            </select>
+          </div>
+          <div>
+            <button id="start-button" type="button">start</button>
+          </div>
+        </div>
+      </div>
+      <!--End of dialog box-->
+    </div>
+    <div id="container"></div>
+    <div id="win-container">
+      <div id="win-message"></div>
+      <div id="win-time"></div>
+      <div id="win-moves"></div>
+    </div>
+    <div id="choices">
+      <button id="shuffle" class="button">Shuffle</button>
+      <button id="change-level" class="button">New Game</button>
+    </div>
+  </body>
+</html>
