@@ -55,11 +55,6 @@ export default class Puzzle {
     container.style.height = `${size}px`;
   }
 
-  // Register the game start time into a variable
-  #setStartTime() {
-    this.#state.gameStartTime = new Date();
-  }
-
   // Generate the initial puzzle grid by creating a 2D array of div elements.
   #generatePuzzleGrid() {
     let id = 1;
@@ -80,8 +75,6 @@ export default class Puzzle {
     div.setAttribute("id", `${id}`);
 
     // Store the tile's grid position as attributes
-    div.setAttribute("i", `${i}`);
-    div.setAttribute("j", `${j}`);
     div.className = "item";
 
     // If this is the last tile (bottom-right corner), mark it as the empty tile
@@ -98,10 +91,15 @@ export default class Puzzle {
   // Mark the given tile as the empty space in the puzzle
   #setEmptyDiv(div) {
     div.textContent = ``;
-    div.className = div.className + " emptyDiv";
+    div.classList.add("emptyDiv");
     this.#state.emptyDiv = div;
     this.#state.emptyIndexI = this.#state.boardDimension - 1;
     this.#state.emptyIndexJ = this.#state.boardDimension - 1;
+  }
+
+  // Register the game start time into a variable
+  #setStartTime() {
+    this.#state.gameStartTime = new Date();
   }
 
   // Append the shuffled puzzle tiles to the container and set their attributes
@@ -122,9 +120,9 @@ export default class Puzzle {
     }
   }
 
-  #shuffle(arr) {
-    // Create a deep copy of the 2D array to store shuffled tiles
-    this.#state.boardState = arr.map((row) => [...row]);
+  #shuffle(unshuffled) {
+    // Create a copy of the 2D array to store shuffled tiles
+    this.#state.boardState = unshuffled.map((row) => [...row]);
 
     // Perform a large number of random moves to shuffle the puzzle
     for (let i = 0; i < Math.pow(this.#state.boardDimension, 4); i++) {

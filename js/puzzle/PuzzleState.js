@@ -32,11 +32,7 @@ export default class PuzzleState {
   isGameFinished = () => {
     for (let i = 0; i < this.boardDimension; i++) {
       for (let j = 0; j < this.boardDimension; j++) {
-        // Check if the tile is in its correct position
-        if (
-          this.boardState[i][j].getAttribute("id") !==
-          this.winState[i][j].getAttribute("id")
-        ) {
+        if (this.boardState[i][j] !== this.winState[i][j]) {
           // If any tile is misplaced, the puzzle is not solved
           return false;
         }

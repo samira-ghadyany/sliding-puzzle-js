@@ -23,7 +23,7 @@ function start() {
 // Function to reset the game and show the start menu
 function newGame() {
   const shuffleBtn = el("#shuffle");
-  shuffleBtn.className = "button";
+  shuffleBtn.classList.remove("disabled");
   shuffleBtn.removeAttribute("disabled");
   shuffleBtn.style.display = "none";
   el("#container").style.display = "none";
@@ -46,13 +46,12 @@ const beforeGameStart = () => {
 
 // Callback function to handle the end of the game
 const afterGameEnd = (gameDuration, movesCount) => {
-  // el("#container").style.display = "none";
   const shuffleBtn = el("#shuffle");
-  shuffleBtn.className = "disabled button";
+  shuffleBtn.classList.add("disabled");
   shuffleBtn.setAttribute("disabled", "true");
   el("#win-container").style.display = "block";
   el("#win-message").textContent = "Well done! You won!";
-  el("#win-time").innerText = `You finished in ${gameDuration} seconds.`;
+  el("#win-time").textContent = `You finished in ${gameDuration} seconds.`;
   el("#win-moves").textContent =
     `You solved the puzzle in ${movesCount} moves.`;
   playWinSound();
